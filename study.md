@@ -19,6 +19,7 @@ https://gitee.com/eggtoopain/type-script-tutorial/
 
 # 初始化工程步骤
 
+```
 npm create vite@latest typescript_tech_egg
 
 > npx
@@ -38,6 +39,7 @@ npm create vite@latest typescript_tech_egg
   cd typescript_tech_egg
   npm install
   npm run dev
+```
 
 
 # 报错信息解决方案
