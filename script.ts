@@ -48,6 +48,12 @@ class WebDisplay {
         `;
         tableBody?.appendChild(tableRow);
     }
+
+    public static deleteData(deleteButton: HTMLAnchorElement): void {
+        const td = deleteButton.parentElement as HTMLTableCellElement;
+        const tr = td.parentElement as HTMLTableRowElement;
+        tr.remove();
+    }
 }
 
 async function getJSON<T>(url: string): Promise<T> {
@@ -76,3 +82,8 @@ async function getData(): Promise<void> {
 // 从而在回调里提供更精确的类型提示（如 MouseEvent）。但在大多数情况下，TS 会自动推断出来，不需要手动写
 // 参数中的 'Click' 大写是无效的，事件名在 DOM API 里必须小写：
 button?.addEventListener<'click'>('click', getData);
+
+tableBody?.addEventListener<'click'>('click', (ev: MouseEvent) => {
+    WebDisplay.deleteData(ev.target as HTMLAnchorElement); // 推荐
+    // WebDisplay.deleteData(<HTMLAnchorElement>ev.target); // 不推荐
+});
